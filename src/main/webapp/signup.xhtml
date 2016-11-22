@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    >
+	<ui:composition template="/templates/main.xhtml">
+		<ui:define name="html_header_content">			
+			<f:metadata>
+				<f:viewAction action="#{userManager.isLoggedInForwardHome()}" />
+			</f:metadata>			
+		</ui:define>
+	
+		<ui:define name="html_body_content">
+			<div class="valign-wrapper blue-grey darken-4" style="background-image: url(#{request.contextPath}/resources/images/blackmamba.png)" id="main-page">
+				<div class="container">
+					<div class="center-align" >
+						<div class="row">
+							<div class="col s6 offset-s3">
+								<div class="container">
+									<div id="signup-panel" class="card">
+										<div class="card-title indigo darken-1">
+											<div class="row">
+												<div class="col s12 center-align" style="height: 15px;"/>
+												<div class="col s12 center-align" style="height: 66px;">
+													<img class="responsive-img" src="#{request.contextPath}/resources/images/signup.png"/>
+												</div>
+												<div class="col s12 center-align" style="height: 15px;"/>
+											</div>
+										</div>		
+										<div class="card-content ">
+											<span class="card-title">#{msg['signup.title']}</span>
+											<div class="left-align">
+												<h:form id="signup-form" autocomplete="off">
+													<div class="row">
+														<div class="col s12 center-align" style="height: 15px;">
+																<p:outputLabel id="signUpMessage" value="#{messageBean.signUpFailMessage}" class="error-message" />
+														</div>
+														<div class="col s12" style="height: 10px;"/>
+														<div class="col s12 input-field"> 
+															<p:inputText id="username" value="#{signUpFormBean.username}" autocomplete="off" placeholder="#{msg['signup.usernamePlaceholder']}" type="text"/>
+															<label for="username">#{msg['signup.username']}</label>
+														</div>
+														<div class="col s12 input-field">
+															<p:inputText id="email" value="#{signUpFormBean.email}" autocomplete="off" placeholder="#{msg['signup.emailPlaceholder']}" type="text"/>
+															<label for="email" >#{msg['signup.email']}</label>
+														</div>
+														<div class="col s12 input-field">
+															<p:inputText id="emailToConfirm" value="#{signUpFormBean.emailToConfirm}" autocomplete="off" type="text" placeholder="#{msg['signup.emailToConfirmPlaceholder']}"/>
+															<p:outputLabel for="emailToConfirm">#{msg['signup.emailToConfirm']}</p:outputLabel>
+														</div>
+														<div class="col s12 input-field">
+															<p:password id="password" value="#{signUpFormBean.password}" autocomplete="off" type="password" placeholder="#{msg['signup.passwordPlaceholder']}"/>
+															<p:outputLabel for="password" >#{msg['signup.password']}</p:outputLabel>
+														</div>
+														<div class="col s12" style="height: 25px;"/>
+														<div class="col s6">
+															<div class="center-align">
+																<p:commandButton id="login" styleClass="waves-effect waves-light btn pink darken-1" action="/index?faces-redirect=true" style="width: 100%;" value="#{msg['action.login']}">
+																</p:commandButton>
+															</div>
+														</div>
+														<div class="col s6">
+															<div class="center-align">
+																<p:commandButton id="signup" styleClass="waves-effect waves-light btn indigo darken-1" style="width: 100%;" type="submit"
+														 		value="#{msg['action.signup']}" action="#{userManager.signup()}" update="signUpMessage" oncomplete="handleSignUpRequest(xhr, status, args)">
+																</p:commandButton>
+															</div>
+														</div>														
+													</div>
+													<p:defaultCommand target="signup" />
+												</h:form>
+											</div>
+										</div>
+										<div class="card-action">
+											<div class="right-align">
+												<h:outputLink value="#{request.contextPath}/resetPassword" target="_blank" class="indigo-text text-darken-1">#{msg['action.lostPassword']}</h:outputLink>
+											</div>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+				// Hohe ermitteln und div mitteilen
+				$(document).ready(function() {
+					$("#main-page").css("height", window.innerHeight);
+				});
+			</script>
+		</ui:define>
+	</ui:composition>
+</html>

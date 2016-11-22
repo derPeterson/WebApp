@@ -1,0 +1,50 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/index.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="signup">
+		<pattern value="/signup" />
+		<view-id value="/signup.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="verify">
+		<pattern value="/verify/#{verifyBean.verificationKey}" />
+		<view-id value="/verify.xhtml" />
+		<!-- 
+		<action>#{userManager.verify()}</action>
+		 -->
+	</url-mapping>
+	
+	<url-mapping id="resetPassword">
+		<pattern value="/resetPassword" />
+		<view-id value="/resetPassword.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="changePassword">
+		<pattern value="/changePassword/#{changePasswordFormBean.passwordResetToken}" />
+		<view-id value="/changePassword.xhtml" />
+		<!-- 
+		<action>#{userManager.validatePasswordResetToken()}</action>
+		 -->
+	</url-mapping>
+	
+	<url-mapping id="logout">
+		<pattern value="/logout" />
+		<view-id value="/logout.xhtml"/>
+		<!-- 
+		<action>#{userManager.logout()}</action>
+		 -->
+	</url-mapping>
+	
+	<url-mapping id="home">
+		<pattern value="/home" />
+		<view-id value="/home/home.xhtml" />
+	</url-mapping>	
+	
+</pretty-config>

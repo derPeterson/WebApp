@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<applicationConfig>
+	<appName>WebApp</appName>
+    <emailConfig>
+        <password>password</password>
+        <smptHost>smtp.googlemail.com</smptHost>
+        <smptPort>465</smptPort>
+        <username>christian.doebl@gmail.com</username>
+        <supportAddress>support@webapp.com</supportAddress>
+    </emailConfig>
+
+	<!-- CleanUpDatabaseJob -> Delete users when verification expired -->
+    <deleteUserWhenVerificationExpired>true</deleteUserWhenVerificationExpired>
+
+</applicationConfig>
+
