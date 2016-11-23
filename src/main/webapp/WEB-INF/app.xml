@@ -5,7 +5,7 @@
         <password>password</password>
         <smptHost>smtp.googlemail.com</smptHost>
         <smptPort>465</smptPort>
-        <username>christian.doebl@gmail.com</username>
+        <username>derpetersondev@gmail.com</username>
         <supportAddress>support@webapp.com</supportAddress>
     </emailConfig>
 
