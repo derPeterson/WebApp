@@ -7,6 +7,9 @@
     xmlns:p="http://primefaces.org/ui"
     >
 	<ui:composition template="/templates/main.xhtml">
+		<ui:define name="html_header_title">				
+		</ui:define>
+	
 		<ui:define name="html_header_content">
 			<f:metadata>
 				<f:viewAction action="#{userManager.logout()}" />
