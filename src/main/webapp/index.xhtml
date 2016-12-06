@@ -6,88 +6,70 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui"
     >
-	<ui:composition template="/templates/main.xhtml">
+	<ui:composition template="/templates/single_center_card.xhtml">
 		<ui:define name="html_header_title">			
 			#{msg['login.title']}		
 		</ui:define>
-	
+
 		<ui:define name="html_header_content">			
 			<f:metadata>
 				<f:viewAction action="#{userManager.isLoggedInForwardHome()}" />
 			</f:metadata>			
 		</ui:define>
 
-		<ui:define name="html_body_content">
-			<div class="valign-wrapper" style="background-image: url(#{request.contextPath}/resources/images/blackmamba.png)" id="main-page">
-				<div class="container">
-					<div class="center-align" >
-						<div class="row">
-							<div class="col s6 offset-s3">
-								<div class="container">
-									<div id="login-panel" class="card">	
-										<div class="card-title indigo darken-1">
-											<div class="row">
-												<div class="col s12 center-align" style="height: 15px;"/>
-												<div class="col s12 center-align" style="height: 66px;">
-													<img src="#{request.contextPath}/resources/images/login.png"/>
-												</div>
-												<div class="col s12 center-align" style="height: 15px;"/>
-											</div>
-										</div>
-										<div class="card-content ">
-											<span class="card-title">#{msg['login.title']}</span>
-											<div class="left-align">
-												<h:form id="login-form">
-													<div class="row">
-														<div class="col s12 center-align" style="height: 15px;">
-															<p:outputLabel id="loginMessage" value="#{messageBean.loginFailMessage}" class="error-message" />
-														</div>
-														<div class="col s12" style="height: 10px;"/>
-														<div class="col s12 input-field"> 
-															<p:inputText id="username" value="#{loginFormBean.usernameOrEmail}" autocomplete="off" type="text"/>
-															<p:outputLabel for="username">#{msg['login.username']}</p:outputLabel>
-														</div>
-														<div class="col s12 input-field">
-															<p:password id="password" value="#{loginFormBean.userPassword}" autocomplete="off" type="text"/>
-															<p:outputLabel for="password" >#{msg['login.password']}</p:outputLabel>
-														</div>
-														<div class="col s12" style="height: 25px;"/>
-														<div class="col s6">
-															<div class="center-align">
-																<p:commandButton id="sign-up" styleClass="waves-effect waves-light btn pink darken-1" action="/signup?faces-redirect=true" style="width: 100%;"  value="#{msg['action.signup']}">
-																</p:commandButton>
-															</div>
-														</div>
-														<div class="col s6">
-															<div class="center-align">
-																<p:commandButton id="login" styleClass="waves-effect waves-light btn indigo darken-1" style="width: 100%;" type="submit"
-														 		value="#{msg['action.login']}" update="loginMessage" action="#{userManager.login()}" oncomplete="handleLoginRequest(xhr, status, args)">
-																</p:commandButton>
-															</div>
-														</div>														
-													</div>
-													<p:defaultCommand target="login" />
-												</h:form>
-											</div>
-										</div>
-										<div class="card-action">
-											<div class="right-align">
-												<h:outputLink value="#{request.contextPath}/resetPassword" target="_blank" class="indigo-text text-darken-1">#{msg['action.lostPassword']}</h:outputLink>
-											</div>
-										</div>
-									</div>
-								</div>	
-							</div>
+		<ui:define name="single_center_card_content">
+			<div id="login-panel" class="card">	
+				<div class="card-title indigo darken-1">
+					<div class="row">
+						<div class="col s12 center-align" style="height: 15px;"/>
+						<div class="col s12 center-align" style="height: 66px;">
+							<img src="#{request.contextPath}/resources/images/login.png"/>
 						</div>
+						<div class="col s12 center-align" style="height: 15px;"/>
+					</div>
+				</div>
+				<div class="card-content ">
+					<span class="card-title">#{msg['login.title']}</span>
+					<div class="left-align">
+						<h:form id="login-form">
+							<div class="row">
+								<div class="col s12 center-align" style="height: 15px;">
+									<p:outputLabel id="loginMessage" value="#{messageBean.loginFailMessage}" class="error-message" />
+								</div>
+								<div class="col s12" style="height: 10px;"/>
+								<div class="col s12 input-field"> 
+									<p:inputText id="username" value="#{loginFormBean.usernameOrEmail}" autocomplete="off" type="text"/>
+									<p:outputLabel for="username">#{msg['login.username']}</p:outputLabel>
+								</div>
+								<div class="col s12 input-field">
+									<p:password id="password" value="#{loginFormBean.userPassword}" autocomplete="off" type="text"/>
+									<p:outputLabel for="password" >#{msg['login.password']}</p:outputLabel>
+								</div>
+								<div class="col s12" style="height: 25px;"/>
+								<div class="col s6">
+									<div class="center-align">
+										<p:commandButton id="sign-up" styleClass="waves-effect waves-light btn pink darken-1" action="/signup?faces-redirect=true" style="width: 100%;"  value="#{msg['action.signup']}">
+										</p:commandButton>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="center-align">
+										<p:commandButton id="login" styleClass="waves-effect waves-light btn indigo darken-1" style="width: 100%;" type="submit"
+														 		value="#{msg['action.login']}" update="loginMessage" action="#{userManager.login()}" oncomplete="handleLoginRequest(xhr, status, args)">
+										</p:commandButton>
+									</div>
+								</div>														
+							</div>
+							<p:defaultCommand target="login" />
+						</h:form>
+					</div>
+				</div>
+				<div class="card-action">
+					<div class="right-align">
+						<h:outputLink value="#{request.contextPath}/resetPassword" target="_blank" class="indigo-text text-darken-1">#{msg['action.lostPassword']}</h:outputLink>
 					</div>
 				</div>
 			</div>
-			<script>
-				// Hohe ermitteln und div mitteilen
-				$(document).ready(function() {
-					$("#main-page").css("height", window.innerHeight);
-				});
-			</script>
 		</ui:define>
 	</ui:composition>
 </html>
