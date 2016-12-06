@@ -37,7 +37,7 @@ public class CleanUpDatabaseJob implements Job {
 		try {
 			if(AppConfigManager.INSTANCE.getApplicationConfig().isDeleteUserWhenVerificationExpired()) {
 				Integer deleted = VerificationToken.deleteAllUserWithOldToken(entityManager, currentTimestamp);
-				LOGGER.debug("CleanUpDatabaseJob - Deleted users '{}' verification expired" , deleted);
+				LOGGER.debug("CleanUpDatabaseJob - Deleted users '{}' (verification expired)" , deleted);
 			} else {
 				Integer deleted = VerificationToken.deleteAllOldToken(entityManager, currentTimestamp);
 				LOGGER.debug("CleanUpDatabaseJob - VerificationToken deleted tokens '{}'", deleted);
